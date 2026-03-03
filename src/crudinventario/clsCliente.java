@@ -11,36 +11,38 @@ import javax.swing.DefaultListModel;
  *
  * @author chris
  */
-public class clsArticulo {
+public class clsCliente {
     
-    private String codigo;
-    private String descripcion;
-    private Double precio;
+    private Double codigo;
+    private String nombre;
+    private String tipo;
+    private String razon;
     
-    public clsArticulo(String codigo, String descripcion, Double precio){
+    public clsCliente(Double codigo, String nombre, String tipo, String razon){        
         this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precio = precio;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.razon = razon;
     }
     
-    public clsArticulo(){
+    public clsCliente(){
         
     }
     
     public String aTexto(){
-        String articulo = this.codigo + "|" + this.descripcion + "|" + this.precio;
-        return articulo;
+        String cliente = this.codigo + "|" + this.nombre + "|" + this.tipo + "|" + this.razon;
+        return cliente;
     }
     
     public void guardar(){
-        mArticulo article = new mArticulo();
-        article.insertar(this.aTexto());
+        mCliente client  = new mCliente();
+        client.insertar(this.aTexto());
         System.out.println(this.aTexto());
     }
     
     public DefaultListModel<String> llenarLista(){
-        mArticulo mArticle = new mArticulo();
-        ArrayList<String> datos = mArticle.consultar();
+        mCliente mClient = new mCliente();
+        ArrayList<String> datos = mClient.consultar();
         
         DefaultListModel<String> modelLista = new DefaultListModel<>();
         
@@ -50,4 +52,6 @@ public class clsArticulo {
         
         return modelLista;
     }
+    
+    
 }

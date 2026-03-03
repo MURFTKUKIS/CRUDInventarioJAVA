@@ -15,13 +15,13 @@ import java.util.ArrayList;
  *
  * @author chris
  */
-public class mArticulo {
+public class mCliente {
     
     public void insertar(String cadenaArticulo){
         
         try {
             // Esta linea crea el archivo donde se guarda la informacion
-            FileWriter archivo = new FileWriter("listado_articulos.txt",true);
+            FileWriter archivo = new FileWriter("listado_clientes.txt",true);
             // Buffer temporal que se encarga de guardar los datos en el archivo
             BufferedWriter buffer = new BufferedWriter(archivo);
             
@@ -42,11 +42,11 @@ public class mArticulo {
         //Variable donde se guarda los registros de mi archivo        
         ArrayList<String> listaRegistros = new ArrayList<>();
         
-        try(BufferedReader br = new BufferedReader( new FileReader("listado_articulos.txt"))){
+        try(BufferedReader br = new BufferedReader( new FileReader("listado_clientes.txt"))){
             String linea;
             while ((linea = br.readLine()) != null){
                 String[] datos = linea.split("\\|");
-                String datoVisual = "Codigo: " + datos[0] + "Descripcion: " + datos[1] + "Precio: " + datos[2];
+                String datoVisual = "Codigo: " + datos[0] + "Nombre: " + datos[1] + "Tipo: " + datos[2] + "Razon: " + datos[3];
                 listaRegistros.add(datoVisual);
             
             }
