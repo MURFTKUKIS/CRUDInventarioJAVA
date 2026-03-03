@@ -13,13 +13,13 @@ import javax.swing.DefaultListModel;
  */
 public class clsCliente {
     
-    private Double codigo;
+    private String numero;
     private String nombre;
     private String tipo;
     private String razon;
     
-    public clsCliente(Double codigo, String nombre, String tipo, String razon){        
-        this.codigo = codigo;
+    public clsCliente(String numero, String nombre, String tipo, String razon){        
+        this.numero = numero;
         this.nombre = nombre;
         this.tipo = tipo;
         this.razon = razon;
@@ -30,7 +30,7 @@ public class clsCliente {
     }
     
     public String aTexto(){
-        String cliente = this.codigo + "|" + this.nombre + "|" + this.tipo + "|" + this.razon;
+        String cliente = this.numero + "|" + this.nombre + "|" + this.tipo + "|" + this.razon;
         return cliente;
     }
     

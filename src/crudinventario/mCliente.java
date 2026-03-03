@@ -46,7 +46,7 @@ public class mCliente {
             String linea;
             while ((linea = br.readLine()) != null){
                 String[] datos = linea.split("\\|");
-                String datoVisual = "Codigo: " + datos[0] + "Nombre: " + datos[1] + "Tipo: " + datos[2] + "Razon: " + datos[3];
+                String datoVisual = "Numero: " + datos[0] + "Nombre: " + datos[1] + "Tipo: " + datos[2] + "Razon: " + datos[3];
                 listaRegistros.add(datoVisual);
             
             }
