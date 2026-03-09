@@ -18,6 +18,8 @@ public class frmArticulo extends javax.swing.JFrame {
     public frmArticulo() {
         initComponents();
     }
+    
+    clsArticulo updateArticulo;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -296,16 +298,20 @@ public class frmArticulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigo1ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        updateArticulo.actualizar(txtCodigo1.getText(), txtDescripcion1.getText(), txtPrecio1.getText());
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void lstArticuloValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArticuloValueChanged
         if(!evt.getValueIsAdjusting()){
             String registroSeleccionado = lstArticulo.getSelectedValue();
             String[] datos = registroSeleccionado.split("\\|");
-            txtCodigo1.setText(datos[0].replace("Codigo: ", ""));
-            txtDescripcion1.setText(datos[1].replace("Descripcion: ", ""));
-            txtPrecio1.setText(datos[2].replace("Precio: ", ""));
+            String codigo = datos[0].replace("Codigo: ", "");
+            String descripcion = datos[1].replace("Descripcion: ", "");
+            String precio = datos[2].replace("Precio: ", "");
+            txtCodigo1.setText(codigo);
+            txtDescripcion1.setText(descripcion);
+            txtPrecio1.setText(precio);
+            updateArticulo = new clsArticulo(codigo,descripcion,Double.parseDouble(precio));
             
         }
     }//GEN-LAST:event_lstArticuloValueChanged
