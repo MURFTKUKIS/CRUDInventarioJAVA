@@ -78,7 +78,7 @@ public class mArticulo {
                 bw.newLine();
             }
     }catch(Exception e){
-        System.out.println("Error al actualizar2" + e.getMessage());
+        System.out.println("Error al actualizar" + e.getMessage());
         
     }
         

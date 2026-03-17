@@ -5,6 +5,7 @@
 package crudinventario;
 
 import java.util.ArrayList;
+import java.io.BufferedReader;
 import javax.swing.DefaultListModel;
 
 /**
@@ -34,6 +35,11 @@ public class clsCliente {
         return cliente;
     }
     
+    public String getNombre(){
+        return this.nombre;
+        
+    }
+    
     public void guardar(){
         mCliente client  = new mCliente();
         client.insertar(this.aTexto());
@@ -53,5 +59,26 @@ public class clsCliente {
         return modelLista;
     }
     
+    public void actualizar(String newNumero, String newNombre, String newTipo, String newRazon){
+        String nuevaLinea = newNumero + "|" + newNombre + "|" + newTipo + "|" + newRazon;
+        String lineaOriginal = this.numero + "|" + this.nombre + "|" + this.tipo + "|" + this.razon;
+        
+        System.out.println("Nuevo valores" + nuevaLinea);
+        System.out.println("Valores Originales" + lineaOriginal);
+        
+        mCliente mClient = new mCliente ();
+        mClient.update(lineaOriginal, nuevaLinea, "listado_clientes.txt");
+
+    }
     
+    public void eliminar(){
+        String lineaOriginal = this.numero + "|" + this.nombre + "|" + this.tipo + "|" + this.razon;
+        
+        System.out.println("Valores Originales" + lineaOriginal);
+        
+        mCliente mClient = new mCliente ();
+        mClient.delete(lineaOriginal, "listado_clientes.txt");
+
+    }
+        
 }
