@@ -32,6 +32,9 @@ public class frmArticulo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,6 +71,16 @@ public class frmArticulo extends javax.swing.JFrame {
         lblCodigo = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jmArchivo = new javax.swing.JMenu();
+        jmiImportar = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -317,8 +330,22 @@ public class frmArticulo extends javax.swing.JFrame {
                     .addComponent(lblPrecio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
+
+        jmArchivo.setText("Archivo");
+        jmArchivo.addActionListener(this::jmArchivoActionPerformed);
+
+        jmiImportar.setText("Importar");
+        jmiImportar.addActionListener(this::jmiImportarActionPerformed);
+        jmArchivo.add(jmiImportar);
+
+        jMenuBar2.add(jmArchivo);
+
+        jMenu4.setText("BY Christopher Mora Angulo");
+        jMenuBar2.add(jMenu4);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -414,6 +441,18 @@ public class frmArticulo extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void jmArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmArchivoActionPerformed
+        
+    }//GEN-LAST:event_jmArchivoActionPerformed
+
+    private void jmiImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiImportarActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(this, "Es importante que el archivo a importar tenga el nombre Inventario.csv y se encuentre en la raiz del proyecto", "Importacion de Datos desde archivo CSV", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(respuesta == JOptionPane.YES_OPTION){
+            clsCsv cCsv = new clsCsv();
+            cCsv.importarDatos();
+        }
+    }//GEN-LAST:event_jmiImportarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,12 +498,19 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenu jmArchivo;
+    private javax.swing.JMenuItem jmiImportar;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblPrecio;

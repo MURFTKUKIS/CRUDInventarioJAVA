@@ -70,6 +70,7 @@ public class frmCliente extends javax.swing.JFrame {
         lblTipoCliente = new javax.swing.JLabel();
         lblRazonSocial = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -244,6 +245,8 @@ public class frmCliente extends javax.swing.JFrame {
                 .addComponent(btnEliminar)
                 .addGap(0, 85, Short.MAX_VALUE))
         );
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -427,6 +430,7 @@ public class frmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

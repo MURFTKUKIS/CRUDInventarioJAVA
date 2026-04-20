@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class mCliente {
     
-    public void insertar(String cadenaArticulo){
+    public void insertar(String cadenaCliente){
         
         try {
             // Esta linea crea el archivo donde se guarda la informacion
@@ -26,7 +26,7 @@ public class mCliente {
             BufferedWriter buffer = new BufferedWriter(archivo);
             
             // Escribe en el archivo de texto
-            buffer.write(cadenaArticulo);
+            buffer.write(cadenaCliente);
             // Agrega un salto de linea al registro
             buffer.newLine();
             // Guarda los registros en el archivo
