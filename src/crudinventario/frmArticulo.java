@@ -13,6 +13,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 
 /**
  *
@@ -83,6 +88,7 @@ public class frmArticulo extends javax.swing.JFrame {
         jmArchivo = new javax.swing.JMenu();
         jmiImportar = new javax.swing.JMenuItem();
         jmiExportar = new javax.swing.JMenuItem();
+        jmiExportar1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("File");
@@ -353,6 +359,10 @@ public class frmArticulo extends javax.swing.JFrame {
         jmiExportar.addActionListener(this::jmiExportarActionPerformed);
         jmArchivo.add(jmiExportar);
 
+        jmiExportar1.setText("Exportar (PDF)");
+        jmiExportar1.addActionListener(this::jmiExportar1ActionPerformed);
+        jmArchivo.add(jmiExportar1);
+
         jMenuBar2.add(jmArchivo);
 
         jMenu4.setText("BY Christopher Mora Angulo");
@@ -516,6 +526,61 @@ public class frmArticulo extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jmiExportarActionPerformed
 
+    private void jmiExportar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExportar1ActionPerformed
+        Document documento = new Document();
+        try {
+        // 2. Preparamos el escritor para guardar el archivo en el disco duro
+        PdfWriter.getInstance(documento, new FileOutputStream("Reporte_Inventario.pdf"));
+       
+        // 3. Abrimos el documento para empezar a escribirle
+        documento.open();
+       
+        // 4. Agregamos un Título
+        documento.add(new Paragraph("Reporte Gerencial de Inventario - Taller 360"));
+        documento.add(new Paragraph(" ")); // Un salto de línea para dar espacio
+
+        // 5. Creamos la estructura tabular (3 columnas)
+        PdfPTable tabla = new PdfPTable(4);
+       
+        // 6. Agregamos los encabezados de la tabla
+        tabla.addCell("CÓDIGO");
+        tabla.addCell("DESCRIPCIÓN");
+        tabla.addCell("PRECIO ($)");
+        tabla.addCell("Estado");
+        
+        // 7. Toma los datos del .txt y los muestra en el PDF
+        BufferedReader br = new BufferedReader(new FileReader("listado_articulos.txt"));
+        String linea;
+        
+        while ((linea = br.readLine()) !=null){
+            String[] datos = linea.split("\\|");
+            if(datos.length >= 3){
+                tabla.addCell(datos[0]);
+                tabla.addCell(datos[1]);
+                tabla.addCell(datos[2]);
+                if (Math.random() > 0.5){
+                    tabla.addCell("Agotado");                    
+                }else{
+                    tabla.addCell("Disponible");
+                }
+                   
+            }                
+            
+        }
+
+        documento.add(tabla);
+
+        // 9. Cerramos el documento (¡Importantísimo para que se guarde el archivo!)
+        documento.close();
+       
+        // Mensaje de éxito para el usuario
+        javax.swing.JOptionPane.showMessageDialog(this, "¡PDF generado con éxito en la carpeta del proyecto!");
+
+    } catch (Exception e) {
+        System.out.println("Error al generar el PDF: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jmiExportar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -574,6 +639,7 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenu jmArchivo;
     private javax.swing.JMenuItem jmiExportar;
+    private javax.swing.JMenuItem jmiExportar1;
     private javax.swing.JMenuItem jmiImportar;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
